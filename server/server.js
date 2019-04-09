@@ -15,7 +15,7 @@ app.listen(port, function () {
 app.use(morgan('dev'));
 
 // Static Middleware
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Body Parsing Middleware
 app.use(bodyParser.json());
@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', require('./apiRoutes'));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // SERVER ERROR
