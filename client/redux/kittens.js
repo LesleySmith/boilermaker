@@ -1,3 +1,4 @@
+import Axios from 'axios';
 
 // ACTION TYPES
 export const SET_KITTENS = 'SET_KITTENS'
@@ -23,6 +24,12 @@ const kittensReducer = (state = initialState, action) => {
 }
 
 // THUNKS
+export const fetchKittens = () => {
+  return async (dispatch) => {
+    const {data} = await Axios.get('/api/kittens')
+    dispatch(setKittens(data))
+  }
+}
 
 
 export default kittensReducer;

@@ -1,7 +1,16 @@
 const router = require('express').Router();
+const Kitten = require('../db/kitten')
+const User = require('../db/user')
 
 // matches GET requests to /api/kittens/
-router.get('/', function (req, res, next) { /* etc */});
+router.get('/', async(req, res, next) => {
+  try {
+    const kittens = await Kitten.findAll();
+    res.json(kittens);
+  } catch (error) {
+    next(error)
+  }
+});
 // matches POST requests to /api/kittens/
 router.post('/', function (req, res, next) { /* etc */});
 // matches PUT requests to /api/kittens/:kittenId

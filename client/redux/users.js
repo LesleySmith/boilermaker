@@ -1,3 +1,4 @@
+import Axios from 'axios'
 
 // ACTION TYPES
 export const SET_USERS = 'SET_USERS';
@@ -23,9 +24,11 @@ const userReducer = (state = initialState, action) => {
 }
 
 // THUNKS
-// export const fetchUsers = () => {
-//   return async (dispatch) => {
-//   }
-// }
+export const fetchUsers = () => {
+  return async (dispatch) => {
+    const {data} = await Axios.get('/api/users')
+    dispatch(setUsers(data))
+  }
+}
 
 export default userReducer;

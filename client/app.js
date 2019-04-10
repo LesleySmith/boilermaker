@@ -3,10 +3,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 import ReactDOM from 'react-dom';
 import '../public/index.css'
+import Root from './components/root'
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>Hello, world!</div>
+    <Root />
   </Provider>,
   document.getElementById('app')
 );
