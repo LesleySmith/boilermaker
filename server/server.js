@@ -4,12 +4,17 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
+const db = require('./db/database.js');
 
 app.listen(port, function () {
   console.log("Knock, knock");
   console.log("Who's there?");
   console.log(`Your server, listening on port ${port}`);
 });
+
+module.exports = app;
+
+db.sync().then(() => console.log('Database is synced'));
 
 // Logging Middleware
 app.use(morgan('dev'));
